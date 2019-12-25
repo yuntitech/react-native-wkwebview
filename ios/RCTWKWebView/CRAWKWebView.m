@@ -14,6 +14,8 @@
 
 #import <objc/runtime.h>
 
+NSString *const RCTJSNavigationScheme = @"react-js-navigation";
+
 // runtime trick to remove WKWebView keyboard default toolbar
 // see: http://stackoverflow.com/questions/19033292/ios-7-uiwebview-keyboard-issue/19042279#19042279
 @interface _YTSwizzleHelperWK : NSObject @end
@@ -469,7 +471,7 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
   NSURL* url = request.URL;
   NSString* scheme = url.scheme;
   
-  BOOL isJSNavigation = [scheme isEqualToString:RNCJSNavigationScheme];
+  BOOL isJSNavigation = [scheme isEqualToString:RCTJSNavigationScheme];
   
   // handle mailto and tel schemes
   if ([scheme isEqualToString:@"mailto"] || [scheme isEqualToString:@"tel"]) {
